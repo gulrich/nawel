@@ -17,20 +17,20 @@ The main problem with an online solution is to provide an efficient ecryption so
 
 * [DONE] Create an algorithm to generate the tuples
 * Avoid twice in a row tuple, if a tuple already exists (same name as last year) re-generate
-** Be careful if a password was changed during the year, the tuple may be the same but not be encrypted same
-** How about a Christmas day de-encryption of the tuples ?
+  * Be careful if a password was changed during the year, the tuple may be the same but not be encrypted same
+  * How about a Christmas day de-encryption of the tuples ?
 * [DONE] Encrypt the generated tuples
 * [DONE] Store the encrypted tuples in the database
 * [50%] Create an admin space to generate the tuples
-** [50%] Allow the admin to generate the tuples only once a year
-** ? Is a passowrd necessary if it is only possible to generate once a year ?
+  * [50%] Allow the admin to generate the tuples only once a year
+  * ? Is a passowrd necessary if it is only possible to generate once a year ?
 * Create an user page for everyone to check for whom they have to buy a gift
-** [DONE] Personal page with login base on name + password
-** Specify e-mail address
-** Change password
-*** When password is changed, then we need to re-encrypt the tuple based on the new password
-** Reset password
-*** Create an auto-generated password and send it by e-mail
+  * [DONE] Personal page with login base on name + password
+  * Specify e-mail address
+  * Change password
+    * When password is changed, then we need to re-encrypt the tuple based on the new password
+  * Reset password
+    * Create an auto-generated password and send it by e-mail
 
 **Additionnal features**
 * No tuple in one's own family
