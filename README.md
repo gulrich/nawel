@@ -19,6 +19,7 @@ The main problem with an online solution is to provide an efficient ecryption so
 * Avoid twice in a row tuple, if a tuple already exists (same name as last year) re-generate
   * Be careful if a password was changed during the year, the tuple may be the same but not be encrypted same
   * How about a Christmas day de-encryption of the tuples ?
+  * Archive tables with all tuples in plain text with year
 * [DONE] Encrypt the generated tuples
 * [DONE] Store the encrypted tuples in the database
 * [50%] Create an admin space to generate the tuples
