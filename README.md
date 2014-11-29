@@ -28,11 +28,12 @@ The main problem with an online solution is to provide an efficient ecryption so
 * Create an user page for everyone to check for whom they have to buy a gift
   * [DONE] Personal page with login base on name + password
   * Specify e-mail address
-  * Change password
-    * When password is changed, then we need to re-encrypt the tuple based on the new password
-  * Reset password
-    * Create an auto-generated password and send it by e-mail
+  * [DONE] Change password
+    * [DONE] When password is changed, then we need to re-encrypt the tuple based on the new password
+  * [DONE] Reset password
+    * [DONE] Create an auto-generated password and send it by e-mail
   * [DONE] Logout
+  * Add css to make it look beautiful
 
 **Additionnal features**
 * No tuple in one's own family

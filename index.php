@@ -7,7 +7,9 @@ mysql_select_db("nawel");
 require_once("gifts/gift.php");
 require_once("gifts/security.php");
 require_once("gifts/family.php");
+require_once("gifts/mail.php");
 require_once("gifts/account.php");
+
 
 if(isset($_POST["see"])) {
 
@@ -36,11 +38,18 @@ if(isset($_POST['change_password']) && isset($_SESSION['name']) && isset($_SESSI
 	}
 }
 
+if(isset($_POST['reset'])) {
+	$name = addslashes($_POST['name']);
+	Account::resetPassword($name);
+	$msg_reset = "Le nouveau mot de passe vous a été envoyé par e-mail.";
+}
+
 ?>
 
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="javascript/jquery.js"></script>
 <title>Mon cadeau</title>
 </head>
 <body>
@@ -71,12 +80,20 @@ if(isset($_SESSION['name']) && isset($_SESSION['password'])) {
 	if(isset($_POST['see'])) {
 		echo '<span style="color:red">Le nom et le mot de passe ne correspondent pas !</span><br>';
 	}
+	if(isset($msg_reset)) {
+		echo $msg_reset;
+	}
 	?>
 		<form action="#" method="post">
 		<input type="text" placeholder="Nom" name="name" />
 		<input type="password" placeholder="Mot de passe" name="password" />
 		<input type="submit" value="Voir" name="see" />
 		</form>
+		<span style="cursor: pointer;color: blue;text-decoration: underline" onclick='$("#oublie").show("fast")'>Mot de passe oublié ?</span>
+		<form action="#" method="post" id="oublie" style="display:none">
+		<input type="nom" placeholder="Nom" name="name" />
+		<input type="submit" value="Réinitialiser" name="reset" />
+		</form><br>
 	<?php
 }
 ?>
