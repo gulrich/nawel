@@ -44,6 +44,12 @@ if(isset($_POST['reset'])) {
 	$msg_reset = "Le nouveau mot de passe vous a été envoyé par e-mail.";
 }
 
+if(isset($_POST['change_email'])) {
+	$email = addslashes($_POST['email']);
+	Family::changeEmail($_SESSION['name'],$email);
+	$msg_email = "Adresse e-mail modifiée avec succès !";
+}
+
 ?>
 
 <html>
@@ -51,6 +57,18 @@ if(isset($_POST['reset'])) {
 <meta charset="UTF-8">
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <title>Mon cadeau</title>
+<style>
+.submitLink {
+background-color: transparent;
+text-decoration: underline;
+border: none;
+color: blue;
+cursor: pointer;
+padding: 0;
+font-size: 12pt;
+font-family: "sans serif";
+}
+</style>
 </head>
 <body>
 
@@ -63,17 +81,25 @@ if(isset($_SESSION['name']) && isset($_SESSION['password'])) {
 		echo '<span style="color:red">'.$erreur_pwd.'</span><br>';
 	} else if(isset($success_pwd)) {
 		echo '<span style="color:green">'.$success_pwd.'</span><br>';
+	} else if(isset($msg_email)) {
+		echo '<span style="color:green">'.$msg_email.'</span><br>';
 	}
 	?>
-		<form action="#" method="post">
+		<span style="cursor: pointer;color: blue;text-decoration: underline" onclick='$("#change").toggle("fast")'>Changer le mot de passe</span>
+		<form action="#" method="post" id="change" style="display: none">
 		<input type="password" placeholder="Ancien mot de passe" name="old" /><br>
 		<input type="password" placeholder="Nouveau mot de passe" name="new" /><br>
 		<input type="password" placeholder="Retapez mot de passe" name="new2" /><br>
 		<input type="submit" value="Changer" name="change_password" />
 		</form>
-	
-	<form action="#" method="post">
-		<input type="submit" value="Logout" name="logout" />
+		<br>
+		<span style="cursor: pointer;color: blue;text-decoration: underline" onclick='$("#change_em").toggle("fast")'>Changer l'e-mail</span>
+		<form action="#" method="post" id="change_em" style="display: none">
+		<input type="text" placeholder="<?php echo Family::getEmail($_SESSION['name']) ?>" name="email" /><br>
+		<input type="submit" value="Changer" name="change_email" />
+		</form>
+		<form action="#" method="post">
+		<input type="submit" value="Logout" name="logout"  class="submitLink"/>
 		</form>
 	<?php
 } else {
