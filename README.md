@@ -32,7 +32,9 @@ The main problem with an online solution is to provide an efficient ecryption so
     * When password is changed, then we need to re-encrypt the tuple based on the new password
   * Reset password
     * Create an auto-generated password and send it by e-mail
+  * [DONE] Logout
 
 **Additionnal features**
 * No tuple in one's own family
 * Black list of people we don't like (lol)
+* List of received gifts and rate them

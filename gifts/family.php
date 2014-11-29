@@ -52,6 +52,18 @@ class Family {
 		mysql_query("update family set password='".$password."' where name='".$name."'") or die(mysql_error());
 	}
 
+	public static function getEmail($name) {
+		$r = mysql_query("select email from family where name='".$name."'") or die(mysql_error());
+		if($d = mysql_fetch_array($r)) {
+			return $d['email'];
+		}
+		else return null;
+	}
+	
+	public static function changeEmail($name,$email) {
+		mysql_query("update family set email='".$email."' where name='".$name."'") or die(mysql_error());
+	}
+	
 }
 
 

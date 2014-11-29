@@ -56,6 +56,20 @@ class Gift {
 
 		return "error";
 	}
+	
+	public static function getMyHash($hash) {		
+		$family = Family::getNames();
+		$r = mysql_query("select hash from gifts") or die(mysql_error());
+		while($d = mysql_fetch_array($r)) {
+			$plaintext = trim(Security::decrypt($hash,$d['hash']));
+
+			if(in_array($plaintext,$family)) {
+				return $d['hash'];
+			}
+		}
+
+		return "error";
+	}
 
 }
 
